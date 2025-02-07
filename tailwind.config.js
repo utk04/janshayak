@@ -32,7 +32,7 @@ module.exports = {
           "100": "#43edb5",
           "200": "rgba(67, 237, 181, 0.5)",
         },
-        darkblue : "0E523B",
+        darkblue: "#0E523B",
         fonts: "#2c3746",
         lightgray: "#98a8bf",
       },
@@ -82,6 +82,11 @@ module.exports = {
       inherit: "inherit",
     },
     screens: {
+      sm: "640px",
+      md: "768px", // ✅ FIXED: Added Tailwind's standard 768px breakpoint
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
       mq1800: {
         raw: "screen and (max-width: 1800px)",
       },

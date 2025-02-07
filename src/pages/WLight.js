@@ -10,7 +10,7 @@ import Footer from "../components/Footer";
 
 const WLight = () => {
   return (
-    <div className="w-full min-h-screen bg-gradient-to-b from-[#fef8f8] to-[#fff]">
+    <div className="w-full min-h-screen bg-gradient-to-b from-[#fef8f8] to-[#fff] overflow-hidden">
       <Menu/>
       <InvestorLogos />
       <FrameComponent />
