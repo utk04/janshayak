@@ -7,7 +7,7 @@ const TechnologyContainer = ({ className = "" }) => {
   const fetchBusinessNews = async () => {
     try {
       const response = await fetch(
-        "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8da3df7ec8194dda978073b4acd06e25"
+        "https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8da3df7ec8194dda978073b4acd06e25"
       );
 
       const data = await response.json();
