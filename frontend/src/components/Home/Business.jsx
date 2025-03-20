@@ -3,19 +3,20 @@ import { useEffect, useState } from "react";
 
 const TechnologyContainer = ({ className = "" }) => {
   const [articles, setArticles] = useState([]);
+  const [displayedArticles, setDisplayedArticles] = useState([]);
 
   const fetchBusinessNews = async () => {
     try {
       const response = await fetch(
-        "https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=ddb85db88d207a94fc1ee7c263553c57" // Replace with new API endpoint
+        "https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=ddb85db88d207a94fc1ee7c263553c57"
       );
 
       const data = await response.json();
       console.log("data ->", data);
 
       if (data.articles && data.articles.length > 0) {
-        const shuffledArticles = data.articles.sort(() => 0.5 - Math.random()).slice(0, 5);
-        setArticles(shuffledArticles);
+        setArticles(data.articles);
+        setDisplayedArticles(data.articles.slice(0, 5)); // Initial 5 articles
       } else {
         console.warn("No articles found.");
       }
@@ -24,9 +25,23 @@ const TechnologyContainer = ({ className = "" }) => {
     }
   };
 
+  // Shuffle logic
   useEffect(() => {
     fetchBusinessNews();
   }, []);
+
+  useEffect(() => {
+    const shuffleArticles = () => {
+      if (articles.length > 0) {
+        const shuffled = [...articles].sort(() => 0.5 - Math.random()).slice(0, 5);
+        setDisplayedArticles(shuffled);
+      }
+    };
+
+    const interval = setInterval(shuffleArticles, 7000); // Shuffle every 10 seconds
+
+    return () => clearInterval(interval); // Cleanup on component unmount
+  }, [articles]);
 
   return (
     <section
@@ -100,16 +115,16 @@ const TechnologyContainer = ({ className = "" }) => {
 
       <div className={`section-container ${className}`}>
         <div className="section-content">
-          <h2 className="flex-1 relative leading-[2.813rem] font-medium inline-block max-w-full mq450:text-[1.375rem] mq450:leading-[1.688rem] mq925:text-[1.875rem] mq925:leading-[2.25rem]">
+          <h2 className="text-slategray font-poppins relative leading-[2.813rem] font-medium inline-block max-w-full mq450:text-[1.375rem] mq450:leading-[1.688rem] mq925:text-[1.875rem] mq925:leading-[2.25rem]">
             Real-Time Business Insights
           </h2>
-          <p className="section-description">
+          <p className="m-0 relative text-[1.2rem] leading-[1.688rem] font-normal font-[inherit] text-gray-100 mq450:text-[1.063rem] mq450:leading-[1.375rem]">
             Stay informed with the latest business trends, insights, and updates from trusted sources.
           </p>
 
           <div className="news-container">
-            {articles.length > 0 ? (
-              articles.map((article, index) => (
+            {displayedArticles.length > 0 ? (
+              displayedArticles.map((article, index) => (
                 <div className="news-item" key={index}>
                   {article.image && (
                     <img src={article.image} alt={article.title} />
