@@ -8,7 +8,7 @@ const TechnologyContainer = ({ className = "" }) => {
   const fetchBusinessNews = async () => {
     try {
       const response = await fetch(
-        "https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=ddb85db88d207a94fc1ee7c263553c57"
+        "https://gnews.io/api/v4/search?q=example&lang=en&country=in&max=10&apikey=ddb85db88d207a94fc1ee7c263553c57"
       );
 
       const data = await response.json();
