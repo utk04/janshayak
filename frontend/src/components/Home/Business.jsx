@@ -7,16 +7,15 @@ const TechnologyContainer = ({ className = "" }) => {
   const fetchBusinessNews = async () => {
     try {
       const response = await fetch(
-        "https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8da3df7ec8194dda978073b4acd06e25"
+        "https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=ddb85db88d207a94fc1ee7c263553c57" // Replace with new API endpoint
       );
 
       const data = await response.json();
       console.log("data ->", data);
 
       if (data.articles && data.articles.length > 0) {
-        const shuffledArticles = data.articles.sort(() => 0.5 - Math.random());
-        const randomFiveArticles = shuffledArticles.slice(0, 5);
-        setArticles(randomFiveArticles);
+        const shuffledArticles = data.articles.sort(() => 0.5 - Math.random()).slice(0, 5);
+        setArticles(shuffledArticles);
       } else {
         console.warn("No articles found.");
       }
@@ -39,7 +38,7 @@ const TechnologyContainer = ({ className = "" }) => {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #5F9EA0; /* Original Theme */
+            background-color: #5F9EA0;
             padding: 3rem 1.5rem;
             border-radius: 20px;
             text-align: center;
@@ -55,18 +54,18 @@ const TechnologyContainer = ({ className = "" }) => {
           }
 
           .news-item {
-            background-color: #2F4F4F; /* Dark Gray Background */
+            background-color: #2F4F4F;
             border-radius: 10px;
             padding: 1rem;
             max-width: 300px;
             text-align: left;
             color: #F5F5F5;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Smooth Shadow */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease-in-out;
           }
 
           .news-item:hover {
-            transform: translateY(-5px); /* Subtle Hover Effect */
+            transform: translateY(-5px);
           }
 
           .news-item img {
@@ -81,7 +80,7 @@ const TechnologyContainer = ({ className = "" }) => {
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
-            color: #00CED1; /* Teal Accent */
+            color: #00CED1;
           }
 
           .news-description {
@@ -101,7 +100,9 @@ const TechnologyContainer = ({ className = "" }) => {
 
       <div className={`section-container ${className}`}>
         <div className="section-content">
-          <h2 className="flex-1 relative leading-[2.813rem] font-medium inline-block max-w-full mq450:text-[1.375rem] mq450:leading-[1.688rem] mq925:text-[1.875rem] mq925:leading-[2.25rem]">Real-Time Business Insights</h2>
+          <h2 className="flex-1 relative leading-[2.813rem] font-medium inline-block max-w-full mq450:text-[1.375rem] mq450:leading-[1.688rem] mq925:text-[1.875rem] mq925:leading-[2.25rem]">
+            Real-Time Business Insights
+          </h2>
           <p className="section-description">
             Stay informed with the latest business trends, insights, and updates from trusted sources.
           </p>
@@ -110,8 +111,8 @@ const TechnologyContainer = ({ className = "" }) => {
             {articles.length > 0 ? (
               articles.map((article, index) => (
                 <div className="news-item" key={index}>
-                  {article.urlToImage && (
-                    <img src={article.urlToImage} alt={article.title} />
+                  {article.image && (
+                    <img src={article.image} alt={article.title} />
                   )}
                   <h3 className="news-title">{article.title}</h3>
                   <p className="news-description">
