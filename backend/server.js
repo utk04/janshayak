@@ -6,6 +6,9 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import expenseRoutes from "./routes/expene.routes.js";
+import chatbotRoutes from "./routes/chatbot.routes.js";
+
 
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import { app, server } from "./socket/socket.js";
@@ -22,6 +25,10 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
+app.use('/api/chatbot', chatbotRoutes);
+app.use("/api/expenses", expenseRoutes);
+
+
 
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
