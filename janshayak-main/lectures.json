@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Lecture 1 — Introduction to X",
+    "description": "Introductory lecture covering basics",
+    "courseId": null,
+    "order": 1,
+    "videoUrl": "https://res.cloudinary.com/dbeuhpugd/video/upload/v1757932833/VID-20231210-WA0010_cxasxl.mp4",
+    "durationSec": 600
+  },
+  {
+    "title": "Lecture 2 — Intermediate X",
+    "description": "Intermediate concepts and examples",
+    "courseId": null,
+    "order": 2,
+    "videoUrl": "https://res.cloudinary.com/dbeuhpugd/video/upload/v1757932852/video6318662010775015459_arjueh.mp4",
+    "durationSec": 1200
+  }
+]

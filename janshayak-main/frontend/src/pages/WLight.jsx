@@ -1,3 +1,5 @@
+// src/pages/WLight.jsx  (or wherever your WLight file lives)
+import { useNavigate } from "react-router-dom";
 import Menu from "../components/Home/Nav";
 import InvestorLogos from "../components/Home/Hero";
 import FrameComponent from "../components/Home/About";
@@ -9,12 +11,23 @@ import InvestorLogos1 from "../components/Home/Investors";
 import Footer from "../components/Home/Footer";
 
 const WLight = () => {
+  const navigate = useNavigate();
+
+  const handleOpenLectures = () => {
+    navigate("/lectures");
+  };
+
+  const handleOpenQuizzes = () => {
+    navigate("/quizzes");
+  };
+
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-[#fef8f8] to-[#fff] overflow-hidden">
-      <Menu/>
+      <Menu />
       <InvestorLogos />
       <FrameComponent />
-      <Background />
+      {/* Pass handlers so Background can navigate */}
+      <Background onOpenLectures={handleOpenLectures} onOpenQuizzes={handleOpenQuizzes} />
       <Section />
       <TechnologyContainer />
       <section className="w-[92.063rem] flex flex-row items-start justify-center pt-[0rem] px-[1.25rem] pb-[20.837rem] box-border max-w-full text-left text-[2.344rem] text-slategray font-poppins mq925:pb-[13.563rem] mq925:box-border">

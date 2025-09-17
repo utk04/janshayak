@@ -1,6 +1,45 @@
+// frontend/src/components/Home/Literacy.jsx
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 const Background = ({ className = "" }) => {
+  const navigate = useNavigate();
+
+  const sections = [
+    {
+      imageSrc: "/image-5@2x.png",
+      title: "Daily Lectures",
+      description: [
+        "Finance basics | Digital skills | Entrepreneurship education | Practical learning"
+      ],
+      to: "/lectures"
+    },
+    {
+      imageSrc: "/image-6@2x.png",
+      title: "Quizes",
+      description: [
+        "Interactive tests | Knowledge checks | Unlock next lecture | Track progress"
+      ],
+      to: "/quizzes"
+    },
+    {
+      imageSrc: "/image-7@2x.png",
+      title: "Govt Schemes Updates",
+      description: [
+        "Scheme awareness | Business opportunities | Rural empowerment | Entrepreneur support"
+      ],
+      to: null
+    },
+    {
+      imageSrc: "/image-8@2x.png",
+      title: "Personalized mentorship",
+      description: [
+        "One-on-one guidance | Tailored support | Growth strategies | JanShayak community"
+      ],
+      to: null
+    }
+  ];
+
   return (
     <section
       className={`self-stretch rounded-11xl bg-cadetblue flex flex-row items-start justify-center pt-[1.812rem] px-[1.25rem] box-border max-w-full z-[2] text-center text-[2.244rem] text-slategray font-poppins mq450:pt-[1.25rem] mq450:pb-[1.25rem] mq450:box-border mq925:pt-[1.813rem] mq925:pb-[1.813rem] mq925:box-border ${className}`}
@@ -33,62 +72,47 @@ const Background = ({ className = "" }) => {
             />
           </div>
           <div className="flex flex-col items-start justify-start pt-[0.844rem] px-[0rem] pb-[0rem] box-border max-w-full mq925:min-w-full mq1350:flex-1">
-  {[
-    {
-      imageSrc: "/image-5@2x.png",
-      title: "Daily Lectures",
-      description: [
-        "Customer onboarding | Policy download | Payment collection | Claim processing | SMS notification"
-      ]
-    },
-    {
-      imageSrc: "/image-6@2x.png",
-      title: "Quizes",
-      description: [
-        "Village level entrepreneurs | Social impact organisations | Financial inclusion agencies | Not for profit organisations Foundations & Government bodies"
-      ]
-    },
-    {
-      imageSrc: "/image-7@2x.png",
-      title: "Govt Schemes Updates",
-      description: [
-        "Direct document upload & processing API integration with Insurance companies"
-      ]
-    },
-    {
-      imageSrc: "/image-8@2x.png",
-      title: "Personalized mentorship",
-      description: [
-        "Interactive dashboard for insurance companies Real-time updates,reports & insights"
-      ]
-    }
-  ].map((section, index) => (
-    <div key={index} className="self-stretch flex flex-row items-start justify-end py-[0rem] pl-[0rem] pr-[0rem] box-border max-w-full cursor-pointer">
-      <div className="flex-1 flex flex-row items-start justify-start gap-[1.7rem] max-w-full mq925:flex-wrap m-1 p-2">
-      <div className="h-[4rem] w-[4rem] overflow-hidden shrink-0 flex items-center justify-center relative max-w-[5.5rem]">
-  <div className="h-full w-full flex items-center justify-center">
-    <img
-      className="h-full w-full object-contain"
-      alt=""
-      src={section.imageSrc}
-    />
+            {sections.map((section, index) => (
+             <div
+  key={index}
+  className="self-stretch flex flex-row items-start justify-end py-[0rem] pl-[0rem] pr-[0rem] box-border max-w-full"
+>
+  <div
+    role={section.to ? "button" : undefined}
+    onClick={() => section.to && navigate(section.to)}
+    onKeyDown={(e) => {
+      if (section.to && (e.key === "Enter" || e.key === " ")) navigate(section.to);
+    }}
+    tabIndex={section.to ? 0 : -1}
+    className="flex-1 flex flex-row items-start justify-start gap-[1.7rem] max-w-full mq925:flex-wrap 
+               m-1 p-4 cursor-pointer rounded-xl border border-gray-200 
+               transition-transform transform hover:scale-[1.02] hover:shadow-lg hover:border-cadetblue focus:outline-none"
+  >
+    <div className="h-[4rem] w-[4rem] overflow-hidden shrink-0 flex items-center justify-center relative max-w-[5.5rem]">
+      <div className="h-full w-full flex items-center justify-center">
+        <img
+          className="h-full w-full object-contain"
+          alt={section.title}
+          src={section.imageSrc}
+        />
+      </div>
+    </div>
+
+    <div className="flex-1 flex flex-col items-start justify-start gap-[0.418rem] min-w-[20.375rem] max-w-full">
+      <div className="w-auto relative leading-[1.406rem] font-medium flex items-center">
+        {section.title}
+      </div>
+      <div className="relative text-[0.938rem] leading-[1.406rem]">
+        {section.description.map((line, i) => (
+          <p key={i} className="m-0">{line}</p>
+        ))}
+      </div>
+    </div>
   </div>
 </div>
 
-        <div className="flex-1 flex flex-col items-start justify-start gap-[0.418rem] min-w-[20.375rem] max-w-full">
-          <div className="w-auto relative leading-[1.406rem] font-medium flex items-center">
-            {section.title}
-          </div>
-          <div className="relative text-[0.938rem] leading-[1.406rem]">
-            {section.description.map((line, i) => (
-              <p key={i} className="m-0">{line}</p>
             ))}
           </div>
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
 
         </div>
       </div>

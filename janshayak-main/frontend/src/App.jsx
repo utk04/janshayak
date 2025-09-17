@@ -6,8 +6,8 @@ import SignUp from "./pages/signup/SignUp";
 import Landing from "./pages/WLight";
 import { Toaster } from "react-hot-toast";
 import { useAuthContext } from "./context/AuthContext";
-
-function App() {
+import LecturesPage from "./pages/LecturesPage";
+import QuizzesPage from "./pages/QuizzesPage";function App() {
 	const { authUser } = useAuthContext();
 	return (
 		<div className=' min-h-screen flex items-center justify-center overflow-auto'>
@@ -16,6 +16,8 @@ function App() {
 				<Route path='/login' element={authUser ? <Navigate to='/' /> : <Login />} />
 				<Route path='/signup' element={authUser ? <Navigate to='/' /> : <SignUp />} />
 				<Route path='/inbox' element={<Home />} />
+				<Route path='/lectures' element={<LecturesPage />} />
+      			<Route path='/quizzes' element={<QuizzesPage />} />	
 			</Routes>
 			<Toaster />
 		</div>

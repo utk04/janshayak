@@ -15,11 +15,17 @@ export const SocketContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (authUser) {
-			const socket = io("https://chat-app-yt.onrender.com", {
-				query: {
-					userId: authUser._id,
-				},
-			});
+			// Decide socket server based on environment
+const SOCKET_URL =
+  import.meta.env.MODE === "development"
+    ? "http://localhost:5000"
+    : "https://chat-app-yt.onrender.com";
+
+const socket = io(SOCKET_URL, {
+  withCredentials: true, // important if you send cookies
+  query: { userId: authUser._id },
+});
+
 
 			setSocket(socket);
 
