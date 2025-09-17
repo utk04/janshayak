@@ -16,7 +16,7 @@ const InvestorLogos = ({ className = "" }) => {
           {/* Welcome Message */}
           <div className="w-full flex flex-col items-center sm:items-start justify-center mb-4">
             <p className='text-xl text-white font-semibold'>
-              Welcome 👋 {authUser?.fullName || "Guest"} ,
+              Welcome back👋 {authUser?.fullName || "Guest"} ,
             </p>
           </div>
 

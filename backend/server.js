@@ -8,6 +8,7 @@ import messageRoutes from "./routes/message.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import expenseRoutes from "./routes/expene.routes.js";
 import chatbotRoutes from "./routes/chatbot.routes.js";
+import learningRoutes from './routes/learning.routes.js';
 
 
 import connectToMongoDB from "./db/connectToMongoDB.js";
@@ -27,6 +28,7 @@ app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 app.use('/api/chatbot', chatbotRoutes);
 app.use("/api/expenses", expenseRoutes);
+app.use('/api/learning', learningRoutes);
 
 
 
