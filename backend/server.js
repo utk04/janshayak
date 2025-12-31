@@ -30,7 +30,7 @@ app.use(
 	cors({
 		origin: [
 			"http://localhost:5173", // local dev
-			"https://<your-frontend-name>.onrender.com", // 🔹 replace with your actual Render frontend URL
+			"https://jansahayak.onrender.com", // 🔹 replace with your actual Render frontend URL
 			"http://localhost:3000",
 		],
 		credentials: true,
@@ -56,3 +56,6 @@ server.listen(PORT, () => {
 	connectToMongoDB();
 	console.log(`🚀 Server running on port ${PORT}`);
 });
+
+
+
