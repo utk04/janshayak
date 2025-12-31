@@ -75,4 +75,4 @@ export const deleteExpense = async (req, res) => {
     console.error("Error deleting expense:", error.message);
     res.status(500).json({ error: "Internal server error" });
   }
-};
+}; 
