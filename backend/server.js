@@ -32,6 +32,7 @@ app.use(
 			"http://localhost:5173", // local dev
 			"https://jansahayak.onrender.com", // 🔹 replace with your actual Render frontend URL
 			"http://localhost:3000",
+			"http://localhost:5000",
 		],
 		credentials: true,
 	})
