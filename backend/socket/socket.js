@@ -9,7 +9,7 @@ const io = new Server(server, {
   cors: {
     origin: [
       "http://localhost:3000",          // dev
-      "https://chat-app-yt.onrender.com" // prod (your deployed frontend)
+      "https://jansahayak.onrender.com" // prod (your deployed frontend)
     ],
     methods: ["GET", "POST"],
     credentials: true, // 👈 allow cookies/auth headers
