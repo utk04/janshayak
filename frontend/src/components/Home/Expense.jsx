@@ -23,7 +23,7 @@ const ExpenseTracker = ({ className = "" }) => {
   const API_BASE =
   import.meta.env.MODE === "development"
     ? "http://localhost:5000/api/expenses"
-    : "https://YOUR-BACKEND-RENDER-URL.onrender.com/api/expenses";
+    : "https://https://janshayak-3vyq.onrender.com/api/expenses";
 
   useEffect(() => {
     setIsClient(true);
