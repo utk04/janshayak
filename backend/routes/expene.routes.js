@@ -13,6 +13,6 @@ const router = express.Router();
 router.post("/", protectRoute, addExpense);
 router.get("/", protectRoute, getExpenses);
 router.get("/stats", protectRoute, getExpenseStats);
-router.delete("/expenses/:id", protectRoute, deleteExpense);
+router.delete("/:id", protectRoute, deleteExpense);
 
 export default router;

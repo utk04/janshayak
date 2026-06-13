@@ -21,9 +21,21 @@ const SOCKET_URL =
     ? "http://localhost:5000"
     : "https://chat-app-yt.onrender.com";
 
+	console.log("MODE:", import.meta.env.MODE);
+console.log("SOCKET_URL:", SOCKET_URL);
+console.log("AUTH USER:", authUser);
+
 const socket = io(SOCKET_URL, {
   withCredentials: true, // important if you send cookies
   query: { userId: authUser._id },
+});
+
+socket.on("connect", () => {
+  console.log("✅ SOCKET CONNECTED:", socket.id);
+});
+
+socket.on("connect_error", (err) => {
+  console.log("❌ SOCKET ERROR:", err.message);
 });
 
 

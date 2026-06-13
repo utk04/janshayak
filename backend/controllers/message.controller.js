@@ -34,7 +34,8 @@ export const sendMessage = async (req, res) => {
     const { message } = req.body;
     const { id: receiverId } = req.params;
     const senderId = req.user._id;
-
+const users = await User.find({});
+console.log(users);
     // Get ChatGPT User
     const chatgptUser = await User.findOne({ username: "chabot" });
     if (!chatgptUser) {

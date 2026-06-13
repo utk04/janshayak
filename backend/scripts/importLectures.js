@@ -31,8 +31,6 @@ async function main() {
       throw new Error('lectures.json must contain a top-level array of lecture objects');
     }
 
-    // Optional: you can clear existing lectures for the same courseId if needed (commented)
-    // await Lecture.deleteMany({ courseId: data[0]?.courseId || { $exists: true } });
 
     const inserted = await Lecture.insertMany(data);
     console.log('Inserted lectures:');
