@@ -20,10 +20,7 @@ const ExpenseTracker = ({ className = "" }) => {
   const [isClient, setIsClient] = useState(false);
   const [selectedChartType, setSelectedChartType] = useState("daily");
 
-  const API_BASE =
-  import.meta.env.MODE === "development"
-    ? "http://localhost:5000/api/expenses"
-    : "https://https://janshayak-3vyq.onrender.com/api/expenses";
+const API_BASE = "/api/expenses";
 
   useEffect(() => {
     setIsClient(true);
