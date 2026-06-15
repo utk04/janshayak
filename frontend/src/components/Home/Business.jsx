@@ -7,29 +7,19 @@ const TechnologyContainer = ({ className = "" }) => {
 
   const fetchBusinessNews = async () => {
   try {
-    console.log("VITE_API_URL =", import.meta.env.VITE_API_URL);
-
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/news`
-    );
-
-    console.log("Response Status =", response.status);
+    const response = await fetch("/api/news");
 
     const data = await response.json();
-
     console.log("News Data =", data);
 
     if (data.articles && data.articles.length > 0) {
       setArticles(data.articles);
       setDisplayedArticles(data.articles.slice(0, 5));
-    } else {
-      console.warn("No articles found.");
     }
   } catch (error) {
     console.error("Error fetching data:", error);
   }
 };
-
   // Shuffle logic
   useEffect(() => {
     fetchBusinessNews();
