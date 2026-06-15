@@ -14,6 +14,8 @@ import learningRoutes from "./routes/learning.routes.js";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import { app, server } from "./socket/socket.js";
 
+import newsRoutes from "./routes/news.routes.js";
+
 dotenv.config();
 
 const __dirname = path.resolve();
@@ -45,6 +47,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/chatbot", chatbotRoutes);
 app.use("/api/expenses", expenseRoutes);
 app.use("/api/learning", learningRoutes);
+app.use("/api/news", newsRoutes);
 
 // ✅ Serve frontend
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
