@@ -6,24 +6,29 @@ const TechnologyContainer = ({ className = "" }) => {
   const [displayedArticles, setDisplayedArticles] = useState([]);
 
   const fetchBusinessNews = async () => {
-    try {
-      const response = await fetch(
-  `${import.meta.env.VITE_API_URL}/api/news`
-);
+  try {
+    console.log("VITE_API_URL =", import.meta.env.VITE_API_URL);
 
-      const data = await response.json();
-      console.log("data ->", data);
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/news`
+    );
 
-      if (data.articles && data.articles.length > 0) {
-        setArticles(data.articles);
-        setDisplayedArticles(data.articles.slice(0, 5)); // Initial 5 articles
-      } else {
-        console.warn("No articles found.");
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
+    console.log("Response Status =", response.status);
+
+    const data = await response.json();
+
+    console.log("News Data =", data);
+
+    if (data.articles && data.articles.length > 0) {
+      setArticles(data.articles);
+      setDisplayedArticles(data.articles.slice(0, 5));
+    } else {
+      console.warn("No articles found.");
     }
-  };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
 
   // Shuffle logic
   useEffect(() => {
